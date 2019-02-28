@@ -73,10 +73,11 @@ namespace DiningPhilosophersProblem
             else
             {
                 //right fork
-                rightFork = (PID == 0) ? forksOnTable[numberOfPhilosophers - 1] : forksOnTable[PID - 1];
+                rightFork = (PID == 0) ? forksOnTable[PID] : forksOnTable[PID - 1];
 
                 //left fork
-                leftFork = forksOnTable[PID];
+                leftFork = (PID == 0) ? forksOnTable[numberOfPhilosophers - 1] : forksOnTable[PID];
+                    
 
                 rightFork.GetFork();
                 Console.WriteLine($"Philosopher {PID}  Grabs right fork");
@@ -85,6 +86,8 @@ namespace DiningPhilosophersProblem
                 Console.WriteLine($"Philosopher {PID}  Grabs left fork");
 
                 Console.WriteLine($"Philosopher {PID} is Eating");
+
+
 
                 rightFork.ReleaseFork();
                 leftFork.ReleaseFork();
